@@ -1,0 +1,39 @@
+public class Personnage{
+Labyrinthe labyrinthe;
+int x, y;
+int xSortie, ySortie;
+
+  Personnage(Labyrinthe l){
+    if (l == null)
+      this.labyrinthe = new Labyrinthe(10);
+    else
+      this.labyrinthe = l;
+    while (this.x < 0 || this.x >= this.labyrinthe.taille || this.y < 0 || this.y >= this.labyrinthe.taille || this.xSortie< 0 || this.xSortie >= this.labyrinthe.taille || this.ySortie < 0 || this.ySortie >= this.labyrinthe.taille) {
+      this.x = choisirHasard(this.labyrinthe.taille);
+      this.y = choisirHasard(this.labyrinthe.taille);
+      this.xSortie = choisirHasard(this.labyrinthe.taille);
+      this.ySortie = choisirHasard(this.labyrinthe.taille);
+    }
+  }
+
+  public String toString(){
+    String st;
+    for (int i=0; i <= this.labyrinthe.taille - 1; i++){
+        for (int j=0; j <= this.labyrinthe.taille - 1; j++){
+          if (this.labyrinthe.etreVide(i, j)){
+            if(i == ySortie && j == xSortie ){
+              st = st + "S";
+            }
+            else {
+              st = st + " ";
+            }
+          }
+          else{
+            if (i == this.labyrinthe.taille - 1)
+              st = st + "\n"; 
+          }
+
+  }
+
+
+}
